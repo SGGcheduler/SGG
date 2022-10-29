@@ -1,0 +1,19 @@
+.header {
+    height: 80px;
+	padding: 0 1rem;
+	display: flex;
+	align-items: center;
+    justify-content: space-between;
+}
+
+.page {
+    display: flex;
+}
+
+h1{
+    display: inline-block;
+}
+
+.logout {
+    display:inline-block;
+}
