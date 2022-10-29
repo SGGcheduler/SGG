@@ -50,10 +50,18 @@
       //Database에서 데이터 가져오기
       const db = firebase.firestore();
       db.collection('product').get().then((result)=>{
-        console.log(result);
+        //console.log(result);
         result.forEach((doc)=>{
-          console.log(doc);
-          console.log(doc.date());
+          //console.log(doc);
+          console.log(doc.data());
+          //var templete = `<div>상품하나</div>`;
+          var templete = `<div class="product">
+        <div class="title">${doc.data().제목}</div>
+        <p class="date">2030년 1월 8일</p>
+        <p class="price">${doc.data().가격}</p>
+        <p class="float-end">0</p>
+      </div>`
+          $('.container').append(templete) //.container에 templete 추가
         })
       })
     </script>
@@ -81,12 +89,14 @@
     </script>
     안녕
     
-    <!-- <div class="product">
-      <div class="title">아디다스 신발</div>
-      <p class="date">2030년 1월 8일</p>
-      <p class="price">2000원</p>
-      <p class="float-end">0</p>
-    </div> -->
+    <div class = "container">
+      <div class="product">
+        <div class="title">아디다스 신발</div>
+        <p class="date">2030년 1월 8일</p>
+        <p class="price">2000원</p>
+        <p class="float-end">0</p>
+      </div>
+    </div>
 
   </body>
 </html>
