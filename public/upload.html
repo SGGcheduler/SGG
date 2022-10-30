@@ -48,8 +48,13 @@
       //Database에서 데이터 가져오기
       const db = firebase.firestore();
       db.collection('product').doc('상품3').set({제목:'변기', 가격:'1000원'}) //상품3 DB에 데이터 추가하기
-      db.collection('product').add({제목: '변기', 가격: '2000원'}) //자동으로 문서이름 부여됨
-      db.collection('product').add({제목: '화장지', 가격: 10000})
+      //db.collection('product').add({제목: '변기', 가격: '2000원'}) //자동으로 문서이름 부여됨
+      //db.collection('product').add({제목: '화장지', 가격: 10000})
+
+      document.getElementById("send").addEventListener('click', () => {
+        db.collection('product').add({Title: $('.Title').val(), Description: $('.Description').val(), TodoList: $('.TodoList').val()})
+      });
+      
       
     </script>
 
@@ -60,9 +65,9 @@
     crossorigin="anonymous"></script>
 
     <div class="container">
-        <input type="text" class="form-control" id="title" placeholder="title">
-        <textarea class="form-control" id="content">content</textarea>
-        <input type="text" class="form-control" id="price" placeholder="price">
+        <input type="text" class="Title" id="title" placeholder="title">
+        <textarea class="Description" id="description">content</textarea>
+        <input type="text" class="TodoList" id="price" placeholder="price">
         <!-- <input class="form-control" type="file" id="image"> -->
         <button class="btn btn-danger" id="send">올리기</button>
         abc
