@@ -47,6 +47,9 @@
       // Initialize Cloud Firestore and get a reference to the service
       //Database에서 데이터 가져오기
       const db = firebase.firestore();
+      db.collection('product').doc('상품3').set({제목:'변기', 가격:'1000원'}) //상품3 DB에 데이터 추가하기
+      db.collection('product').add({제목: '변기', 가격: '2000원'}) //자동으로 문서이름 부여됨
+      db.collection('product').add({제목: '화장지', 가격: 10000})
       
     </script>
 
@@ -56,6 +59,14 @@
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
     crossorigin="anonymous"></script>
 
+    <div class="container">
+        <input type="text" class="form-control" id="title" placeholder="title">
+        <textarea class="form-control" id="content">content</textarea>
+        <input type="text" class="form-control" id="price" placeholder="price">
+        <!-- <input class="form-control" type="file" id="image"> -->
+        <button class="btn btn-danger" id="send">올리기</button>
+        abc
+    </div>
    
   </body>
 </html>
