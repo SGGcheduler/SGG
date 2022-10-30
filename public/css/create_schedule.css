@@ -57,6 +57,20 @@ input[type="date"]{
     margin-top:5px;
 }
 
+.Time{
+    margin-top:20px;
+    font-size:1.5em;
+    font-family:Nanum Pen Script;
+}
+
+input[type="Time"]{
+    display:inline-block;
+    height:auto;
+    line-height:normal;
+    padding:5px;
+    margin-top:5px;
+}
+
 /*제목*/
 .Title{
     margin-top:25px;
