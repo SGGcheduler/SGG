@@ -1,31 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.13.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.13.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-performance-compat.js"></script>
-    <!-- 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to Firebase Hosting</title>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/9.13.0/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/9.13.0/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-functions-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-messaging-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-remote-config-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-performance-compat.js"></script>
+  <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-  </head>
-  <body>
+</head>
+
+<body>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
     
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBiTFjRavybJs8Q0lBRgGPRq3nRJR9AOPQ",
+        authDomain: "sggcheduler.firebaseapp.com",
+        projectId: "sggcheduler",
+        storageBucket: "sggcheduler.appspot.com",
+        messagingSenderId: "423408396660",
+        appId: "1:423408396660:web:fc5e5957c9574d5c022421"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
 
-  </body>
+      // Initialize Cloud Firestore and get a reference to the service
+      //Database에서 데이터 가져오기
+      const db = firebase.firestore();
+      db.collection('product').get().then((result)=>{
+        //console.log(result);
+        result.forEach((doc)=>{
+          //console.log(doc);
+          console.log(doc.data());
+          //var templete = `<div>상품하나</div>`;
+          var templete = `<div class="product">
+            <div class="title">${doc.data().Title}</div>
+            <p class="date">2030년 1월 8일</p>
+            <p class="price">${doc.data().Description}</p>
+            <p class="float-end">0</p>
+          </div>`
+          $('.container').append(templete) //.container에 templete 추가
+        })
+      })
+    </script>
+
+  <!-- jQeury -->
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+  <div class="container"></div>
+
+</body>
+
 </html>
