@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+  <meta charset='utf-8' />
+  <link href='./css/calendar.css' rel='stylesheet' />
+  <script src='./lib/main.js'></script>
+  <script>
+    const date = new Date();
+
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    const dateStr = year + '-' + month + '-' + day;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        headerToolbar: {
+          left: 'prevYear,prev,next,nextYear today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay'
+        },
+        initialDate: `${dateStr}`,
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        dayMaxEvents: true, // allow "more" link when too many events
+        events: [],
+        // 여기 수정해야함
+        eventClick: function (info) {
+          alert('Event: ' + info
+            .event.title);
+          alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+          alert('View: ' + info.view.type);
+
+          // change the border color just for fun
+          info.el.style.borderColor = 'red';
+        }
+      });
+
+
+      calendar.render();
+    });
+  </script>
+</head>
+
+<body>
+  <div id='calendar'></div>
+</body>
+
+</html>

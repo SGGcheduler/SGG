@@ -1,7 +1,9 @@
 @import "reset.css";
 
 body{
-  background: linear-gradient( to left, rgb(239, 231, 192),rgb(160, 207, 254)); 
+  /*background: linear-gradient( to left, rgb(239, 231, 192),rgb(160, 207, 254)); */
+  background:linear-gradient(to right, rgb(132, 144, 200), rgb(248, 238, 225));
+  
   color:rgb(255, 255, 255);
 }
 
@@ -9,11 +11,13 @@ body{
   font-size:4em;
   margin:25px;
   font-family: Caveat;
+  float:left;
 }
 
 .logo2{
   font-size:0.7em;
   font-family:Caveat;
+  
 }
 
 .acc{
