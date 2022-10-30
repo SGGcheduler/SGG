@@ -11,13 +11,20 @@
 
 .page {
     display: flex;
-    background-color: gray;
+    /* background-color: gray; */
+    border: solid 3px white;
+    border-radius: 10px;
     margin:90px;
     padding-bottom:80px;
 }
 
 h1{
     display: inline-block;
+}
+
+input {
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 .log_out {
@@ -39,6 +46,8 @@ h1{
 .enter{
     font-size:3em;
     font-family:Nanum Pen Script;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #fff;
 }
 
 
@@ -55,7 +64,9 @@ input[type="date"]{
     line-height:normal;
     padding:5px;
     margin-top:5px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
 }
+
 
 .Time{
     margin-top:20px;
@@ -69,6 +80,7 @@ input[type="Time"]{
     line-height:normal;
     padding:5px;
     margin-top:5px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
 }
 
 /*제목*/
@@ -83,6 +95,7 @@ input[type="text"]{
     height:auto;
     line-height:normal;
     padding:5px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
 }
 
 /*내용*/
@@ -99,17 +112,41 @@ input[type="text"]{
     margin-top:5px;
 }
 
+textarea{
+    box-sizing: border-box;
+    border: solid 2px white;
+	border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
+}
+
 
 /*등록 버튼*/
 .enter_Button{
     margin-top:10px;
 }
 
+.enter_Button button {
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    background-color:transparent;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
+    
+    
+}
 
 /*투두리스트*/
 
 * {
     box-sizing: border-box;
+    
 }
 
 .to_do_list{
@@ -121,7 +158,11 @@ input[type="text"]{
 .todo_title{
     font-size:3em;
     font-family:Nanum Pen Script;
+    padding-bottom: 10px;
+    width: 400px;
+    border-bottom: 2px solid #fff;
 }
+
 
 /*해야 할 일을 적어보세요!*/
 .artcl_main {
@@ -132,8 +173,9 @@ input[type="text"]{
 }
 
 .artcl_main input {
-    font-size: 1.2em;
+    font-size: 15px;
     flex-grow: 1;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
 }
 
 
@@ -142,6 +184,21 @@ input[type="text"]{
     flex-shrink: 0;
     font-size: 1.2em;
     width: 100px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
+}
+
+.plus {
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    background-color:transparent;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
 }
 
 
@@ -150,18 +207,23 @@ input[type="text"]{
     list-style-type: none;
     padding: 20px;
     margin: 0;
-    background-color: rgb(118, 177, 245);
+    border: 2px solid white;
+    background-color: transparent;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
 }
 
 .list_todo li {
     padding: 5px 15px;
-    background-color: whitesmoke;
+    background-color: transparent;
+    border: 2px solid white;
     font-size: 1.5em;
     line-height: 1.5em;
-    color: #222;
+    color: #fff;
     border-radius: 10px;
+    width: 350px;
     box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
+    text-overflow:ellipsis;
 }
 
 .list_todo li+li {
@@ -175,10 +237,11 @@ input[type="text"]{
     vertical-align: top;
     border: none;
     border-radius: 10px;
-    background-color: #fff;
-    color: rgb(4, 135, 135);
+    background-color: transparent;
+    color: white;
     cursor: pointer;
     transition: .3s;
+    
 }
 
 .list_todo li button:hover {
@@ -187,17 +250,19 @@ input[type="text"]{
 
 
 .btn {
+    width: 150px;
+    height: 40px;
     display: none;
-    width: 200px;
-    float: right;
-    padding: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: auto;
     border-radius: 5px;
+    border: 2px solid #fff;
+    background-color:transparent;
     text-align: center;
-    cursor: pointer;
-    background-color: rgb(2, 0, 128);
+    text-decoration: none;
     color: #fff;
-    transition: .3s;
+    font-size: 15px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
 }
 
 
