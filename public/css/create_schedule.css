@@ -11,7 +11,7 @@
 
 .page {
     display: flex;
-    background-color: 
+    background-color: gray;
     margin:90px;
     padding-bottom:80px;
 }
