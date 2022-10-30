@@ -54,9 +54,9 @@
           console.log(doc.data());
           //var templete = `<div>상품하나</div>`;
           var templete = `<div class="product">
-        <div class="title">${doc.data().제목}</div>
+        <div class="title">${doc.data().Title}</div>
         <p class="date">2030년 1월 8일</p>
-        <p class="price">${doc.data().가격}</p>
+        <p class="price">${doc.data().Description}</p>
         <p class="float-end">0</p>
       </div>`
           $('.container').append(templete) //.container에 templete 추가
