@@ -1,3 +1,6 @@
+@import "reset.css";
+@import "background.css";
+
 .header {
     height: 80px;
 	padding: 0 1rem;
@@ -8,12 +11,190 @@
 
 .page {
     display: flex;
+    background-color: 
+    margin:90px;
+    padding-bottom:80px;
 }
 
 h1{
     display: inline-block;
 }
 
-.logout {
+.log_out {
+    float:right;
+    font-family:Nanum Pen Script;
+    font-size:1.5em;
+    padding:15px;
+}
+
+
+/*스케줄 등록*/
+
+.create_schedule{
+    margin-left:90px;
+    margin-top:50px;
+    
+}
+
+.enter{
+    font-size:3em;
+    font-family:Nanum Pen Script;
+}
+
+
+/*날짜*/
+.Date{
+    margin-top:20px;
+    font-size:1.5em;
+    font-family:Nanum Pen Script;   
+}
+
+input[type="date"]{
     display:inline-block;
+    height:auto;
+    line-height:normal;
+    padding:5px;
+    margin-top:5px;
+}
+
+/*제목*/
+.Title{
+    margin-top:25px;
+    font-family:Nanum Pen Script;
+    font-size:1.5em;
+}
+
+input[type="text"]{
+    display:inline-block;
+    height:auto;
+    line-height:normal;
+    padding:5px;
+}
+
+/*내용*/
+.Description{
+    margin-top:25px;
+    font-family:Nanum Pen Script;
+    font-size:1.5em;
+}   
+
+input[type="text"]{
+    display:inline-block;
+    height:auto;
+    line-height:normal;
+    margin-top:5px;
+}
+
+
+/*등록 버튼*/
+.enter_Button{
+    margin-top:10px;
+}
+
+
+/*투두리스트*/
+
+* {
+    box-sizing: border-box;
+}
+
+.to_do_list{
+    margin-left:140px;
+    margin-top:50px;
+}
+
+/*To Do List*/
+.todo_title{
+    font-size:3em;
+    font-family:Nanum Pen Script;
+}
+
+/*해야 할 일을 적어보세요!*/
+.artcl_main {
+    display: flex;
+    margin-bottom: 30px;
+    gap: 10px;
+    margin-top:50px;
+}
+
+.artcl_main input {
+    font-size: 1.2em;
+    flex-grow: 1;
+}
+
+
+/* + 버튼 */
+.artcl_main button {
+    flex-shrink: 0;
+    font-size: 1.2em;
+    width: 100px;
+}
+
+
+/*리스트*/
+.list_todo {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0;
+    background-color: rgb(118, 177, 245);
+    border-radius: 5px;
+}
+
+.list_todo li {
+    padding: 5px 15px;
+    background-color: whitesmoke;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
+}
+
+.list_todo li+li {
+    margin-top: 20px;
+}
+
+.list_todo li button {
+    float: right;
+    padding: 10px;
+    margin: 0px 0px 0px 20px;
+    vertical-align: top;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    color: rgb(4, 135, 135);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.list_todo li button:hover {
+    background-color: tomato;
+}
+
+
+.btn {
+    display: none;
+    width: 200px;
+    float: right;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(2, 0, 128);
+    color: #fff;
+    transition: .3s;
+}
+
+
+.btn:hover {
+    background-color: tomato;
+}
+
+.btn.on {
+    display: block;
+}
+
+.done {
+    text-decoration: line-through;
 }

@@ -4,43 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <link rel="stylesheet" href="../css/todolist.css">
-    <link rel="stylesheet" href="../css/create_schedule.css">
+   
+    <link rel="stylesheet" href="css/create_schedule.css">
     <script src="https://kit.fontawesome.com/9e1a07a81c.js" crossorigin="anonymous"></script>
     <title>스케줄 생성</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+          </style>
 </head>
 <body>
     <!-- header -->
-    <header class="header">
-        <h1 class="website-title">SGG</h1>
-        <button class="logout">로그아웃</button>
-    </header>
-    <div class="page">
-        <div class="create_schedule">
-            <form>
-                <fieldset>
-                    <legend>스케줄 등록</legend>      
-                    <label for="date">날짜</label>
-                    <input type="date" id="date" required></br>
+   
+    <header>
+        <div class="logo">
+          SGG <a class="logo2">cheduler</a>
+          
+        </div> 
 
-                    <label for="title">제목</label>
-                    <input type="text" id="title" required></br>
-        
-                    <label for="content">내용</label></br>
-                    <textarea rows=10 cols=50 name="content" required></textarea></br>
-                    <button type="submit">등록</button>
-                </fieldset>
-            </form>
+        <!--
+        <div class="log_out">
+            로그아웃
         </div>
+        -->
+        </header>
+    
+    <div class="page" style="clear:both">
+        <div class="create_schedule">
+      
+                <div class="enter">스케줄 등록</div>
+
+                <div class="Date">날짜
+                    <br><label for="date"></label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="Title">제목
+                    <br><label for="title"></label>
+                    <input type="text" id="title" required></br>
+                </div>
+
+                <div class="Description">내용
+                    <label for="content"></label></br>
+                    <textarea rows=15 cols=50 name="content" required></textarea></br>
+                </div>
+                
+                <div class="enter_Button">
+                    <button type="submit">등록</button>
+                </div>                                      
+        </div>
+
+     <!--투두리스트--> 
+
         <div class="to_do_list">
+            <div class="todo_title">To Do List</div>
             <article class="artcl_main">
-                <input placeholder="리스트를 추가해보세요 :)" maxlength="30">
-                <button><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+                <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
+                <button><i class="fa-solid fa-plus"></i></button>
             </article>
-            <ul class="list_todo"></ul>
-            <button class="btn">리스트 다운로드</button>
+
+            <div>
+                <ul class="list_todo"></ul>
+                <button class="btn">리스트 다운로드</button>
+            </div>
         </div>
     </div>
-    <script src="../javascript/todolist.js"></script>
+    <script src="todolist.js"></script>
 </body>
 </html>
