@@ -61,8 +61,9 @@
         const db = firebase.firestore();
         
         document.getElementById("enter_Button").addEventListener('click', () => {
-          db.collection('Celandar_Data').add({Date: $('#Date').val(), Title: $('#Title').val(), Description: $('#Description').val()})
+          db.collection('Celandar_Data').add({User: $('#User'), Date: $('#Date').val(), Time: $('#Time').val(), Title: $('#Title').val(), Description: $('#Description').val(), TodoList: $('#TodoList').val()})
         });
+
       </script>
   
       <!-- jQeury -->
@@ -99,7 +100,8 @@
                     </div>
       
                     <div class="time">시간
-                        <br><input type="time" id="Time" required>
+                        <br><label for="time"></label>
+                        <input type="time" id="Time" required>
                     </div>
       
                     <div class="title">제목
