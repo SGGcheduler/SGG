@@ -114,25 +114,27 @@
                         <textarea rows=15 cols=50 name="content" id="Description" required></textarea></br>
                     </div>
                     
+                    <!--투두리스트--> 
+
+                    <div class="to_do_list">
+                      <div class="todo_title">To Do List</div>
+                      <article class="artcl_main">
+                          <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
+                          <button><i class="fa-solid fa-plus"></i></button>
+                      </article>
+
+                      <div>
+                          <ul class="list_todo"></ul>
+                          <button class="btn">리스트 다운로드</button>
+                      </div>
+                  </div>
+
                     <div id="enter_Button" class="enter_Button">
                         <button type="submit">등록</button>
                     </div>                                      
             </div>
 
-     <!--투두리스트--> 
-
-        <div class="to_do_list">
-            <div class="todo_title">To Do List</div>
-            <article class="artcl_main">
-                <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
-                <button><i class="fa-solid fa-plus"></i></button>
-            </article>
-
-            <div>
-                <ul class="list_todo"></ul>
-                <button class="btn">리스트 다운로드</button>
-            </div>
-        </div>
+     
     </div>
     <script src="todolist.js"></script>
 </body>
