@@ -1,0 +1,28 @@
+@import "reset.css";
+
+body{
+  /*background: linear-gradient( to left, rgb(239, 231, 192),rgb(160, 207, 254)); */
+  background:linear-gradient(to bottom, rgb(1, 20, 107), rgb(228, 188, 135));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color:rgb(255, 255, 255);
+}
+
+.logo{
+  font-size:4em;
+  margin:25px;
+  font-family: Caveat;
+  float:left;
+}
+
+.logo2{
+  font-size:0.7em;
+  font-family:Caveat;
+  
+}
+
+.acc{
+  font-size:1em;
+  text-align: right;
+  margin-right:20px;
+}
