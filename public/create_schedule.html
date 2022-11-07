@@ -1,24 +1,82 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-   
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>스케줄 생성</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.13.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.13.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.13.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.13.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.13.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.13.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.13.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.13.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.13.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.13.0/firebase-performance-compat.js"></script>
+    <!--
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <link rel="stylesheet" href="css/create_schedule.css">
     <script src="https://kit.fontawesome.com/9e1a07a81c.js" crossorigin="anonymous"></script>
-    <title>스케줄 생성</title>
+
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
+        </style>
+
+  </head>
     </style>
 </head>
 <body>
-    <!-- header -->
-   
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBiTFjRavybJs8Q0lBRgGPRq3nRJR9AOPQ",
+          authDomain: "sggcheduler.firebaseapp.com",
+          projectId: "sggcheduler",
+          storageBucket: "sggcheduler.appspot.com",
+          messagingSenderId: "423408396660",
+          appId: "1:423408396660:web:fc5e5957c9574d5c022421"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Cloud Firestore and get a reference to the service
+        //Database에서 데이터 가져오기
+        const db = firebase.firestore();
+
+        document.getElementById("enter_Button").addEventListener('click', () => {
+          db.collection('Celandar_Data').add({User: $('#User'), Date: $('#Date').val(), Time: $('#Time').val(), Title: $('#Title').val(), Description: $('#Description').val(), TodoList: $('#TodoList').val()})
+        });
+
+      </script>
+
+      <!-- jQeury -->
+      <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"></script>
+
+      <div class = "container"></div>
+
+      <!-- create_schedule화면 -->
+      <!-- header -->
     <header>
         <div class="logo">
           SGG <a class="logo2">cheduler</a>
@@ -35,7 +93,7 @@
         <div class="page" style="clear:both">
             <div class="container">
                 <div class="create_schedule">
-        
+
                     <div class="enter">스케줄 등록</div>
 
                     <div class="Date">날짜
@@ -55,10 +113,36 @@
                     <div class="Description">내용
                         <label for="content"></label></br>
                         <textarea rows=15 cols=50 name="content" required></textarea></br>
-                    </div>                                
+                    </div>
                 </div>
 
-                <!--투두리스트--> 
+                <!--투두리스트-->
+        <div class="page" style="clear:both">
+            <div class="create_schedule">
+
+                    <div class="enter">스케줄 등록</div>
+
+                    <div class="date">날짜
+                        <br><label for="date"></label>
+                        <input type="date" id="Date" required>
+                    </div>
+
+                    <div class="time">시간
+                        <br><label for="time"></label>
+                        <input type="time" id="Time" required>
+                    </div>
+
+                    <div class="title">제목
+                        <br><label for="title"></label>
+                        <input type="text" id="Title" required></br>
+                    </div>
+
+                    <div class="description">내용
+                        <label for="content"></label></br>
+                        <textarea rows=15 cols=50 name="content" id="Description" required></textarea></br>
+                    </div>
+
+                    <!--투두리스트-->
 
                 <div class="to_do_list">
                     <div class="todo_title">To Do List</div>
@@ -66,6 +150,12 @@
                         <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
                         <button class="plus"><i class="fa-solid fa-plus"></i></button>
                     </article>
+                    <div class="to_do_list">
+                      <div class="todo_title">To Do List</div>
+                      <article class="artcl_main">
+                          <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
+                          <button><i class="fa-solid fa-plus"></i></button>
+                      </article>
 
                     <div>
                         <ul class="list_todo"></ul>
