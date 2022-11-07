@@ -125,10 +125,11 @@ function buildTasks() {
 }
 
 // 할일 목록을 localStorage 에 저장하기
-function saveTasks() {
+function saveTasks(uid) {
   const db = firebase.firestore();
   console.log("클릭");
   db.collection("Celandar_Data").add({
+    User: uid,
     Date: $("#Date").val(),
     Time: $("#Time").val(),
     Title: $("#Title").val(),
@@ -138,9 +139,6 @@ function saveTasks() {
     }),
   });
 }
-document.getElementById("enter_Button").addEventListener("click", () => {
-  saveTasks();
-});
 
 // 다운로드 버튼 노출을 판단하는 함수
 function showDownload() {

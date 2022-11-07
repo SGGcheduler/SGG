@@ -49,24 +49,31 @@
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
 
-    // Initialize Cloud Firestore and get a reference to the service
-    //Database에서 데이터 가져오기
-    const db = firebase.firestore();
-    db.collection('Celandar_Data').get().then((result)=>{
-      //console.log(result);
-      result.forEach((doc)=>{
-        //console.log(doc);
-        console.log(doc.data());
-        //var templete = `<div>상품하나</div>`;
-        var templete = `<div class="schedule_content" style="border: solid 3px; padding:10px">
-            <div class="Title">제목 : ${doc.data().Title}</div>
-            <div class="Date">날짜 : ${doc.data().Date}</div>
-            <div class="Time">시간 : ${doc.data().Time}</div>
-            <div class="Description">내용 : ${doc.data().Description}</div>
-        </div>`
-        $('.schedule').append(templete) //.container에 templete 추가
-      })
+            const uid = user.uid;
+          
+        // Initialize Cloud Firestore and get a reference to the service
+        //Database에서 데이터 가져오기
+        const db = firebase.firestore();
+        db.collection("Celandar_Data").where("User", "==", `${uid}`).where("Date","==",`${document.getElementById('today').innerText}`).get().then(snapShot=>{
+            snapShot.forEach(doc => {
+            console.log(doc.data());
+            //var templete = `<div>상품하나</div>`;
+            var templete = `<div class="schedule_content" style="border: solid 3px; padding:10px">
+                <div class="Title">제목 : ${doc.data().Title}</div>
+                <div class="Date">날짜 : ${doc.data().Date}</div>
+                <div class="Time">시간 : ${doc.data().Time}</div>
+                <div class="Description">내용 : ${doc.data().Description}</div>
+            </div>`
+            $('.schedule').append(templete) //.container에 templete 추가
+          })
+        })
+      }
+      else{
+        
+      }
     })
   </script>
 
@@ -81,9 +88,13 @@
   </header>
 
   <div class="page" style="width: 80%;">
+    <div id="today"></div>
     <div class="schedule" style="border: solid 3px black;"></div>
     <button id="plus" style="width : 100%; margin-top: 10px;"><i class="fa-solid fa-plus"></i></button>
   </div>
 </body>
+<script>
+  document.getElementById('today').innerText = opener.document.getElementById('clickDate').innerText;
+</script>
 
 </html>

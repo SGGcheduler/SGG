@@ -17,7 +17,6 @@
     <script defer src="/__/firebase/9.13.0/firebase-storage-compat.js"></script>
     <script defer src="/__/firebase/9.13.0/firebase-analytics-compat.js"></script>
     <script defer src="/__/firebase/9.13.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.13.0/firebase-performance-compat.js"></script>
     <!--
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
@@ -58,13 +57,6 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
 
-        // Initialize Cloud Firestore and get a reference to the service
-        //Database에서 데이터 가져오기
-        const db = firebase.firestore();
-
-        // document.getElementById("enter_Button").addEventListener('click', () => {
-        //   db.collection('Celandar_Data').add({User: $('#User'), Date: $('#Date').val(), Time: $('#Time').val(), Title: $('#Title').val(), Description: $('#Description').val(), TodoList: $('#TodoList').val()})
-        // });
 
     </script>
 
@@ -137,5 +129,22 @@
         <script src="todolist.js"></script>
     </div>
 </body>
+<script>
+    document.getElementById("enter_Button").addEventListener("click", () => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                var uid = user.uid;
+                saveTasks(uid);
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
+        console.log("등록 클릭");
+
+    });
+</script>
 
 </html>

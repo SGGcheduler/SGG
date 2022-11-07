@@ -1,22 +1,89 @@
 <!DOCTYPE html>
-<html lang='ko'>
+<html lang="ko">
 
 <head>
-  <meta charset='utf-8' />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/create_schedule.css">
+  <script src="https://kit.fontawesome.com/9e1a07a81c.js" crossorigin="anonymous"></script>
+  <title>캘린더</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <link href='./css/calendar.css' rel='stylesheet' />
   <script src='./lib/main.js'></script>
-  <script>
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/9.13.0/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/9.13.0/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-functions-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-messaging-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-remote-config-compat.js"></script>
+  <script defer src="/__/firebase/9.13.0/firebase-performance-compat.js"></script>
+  <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+  import {
+    getAuth, // authentication 설정
+    signInWithPopup, //google 로그인을 팝업창에 띄우기 위해
+    GoogleAuthProvider, //google login 기능
+    signInWithEmailAndPassword, // email 로그인
+    createUserWithEmailAndPassword, //email 회원가입
+  } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
+
+    const abbreviationMonth = {
+      Jan:1,
+      Feb:2,
+      Mar:3,
+      Apr:4,
+      May:5,
+      Jun:6,
+      Jul:7,
+      Aug:8,
+      Sep:9,
+      Oct:10,
+      Nov:11,
+      Dec:12
+    };
     const date = new Date();
 
     const year = date.getFullYear();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
     const dateStr = year + '-' + month + '-' + day;
+    const eventArr = [];
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
 
-    document.addEventListener("DOMContentLoaded", function () {
-      var calendarEl = document.getElementById('calendar');
+        const uid = user.uid;
+       
+        const db = firebase.firestore();
+        
+        var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
+        aspectRatio: 1.5,
         headerToolbar: {
           left: 'prevYear,prev,next,nextYear today',
           center: 'title',
@@ -27,93 +94,49 @@
         editable: true,
         dayMaxEvents: true, // allow "more" link when too many events
         selectable: true,
-        selectMirror: true,
         select: function (arg) {
-          var title = prompt('Event Title:');
-          if (title) {
-            calendar.addEvent({
-              title: title,
-              start: arg.start,
-              end: arg.end,
-              allDay: arg.allDay
-            })
-          }
-          calendar.unselect()
+          window.location.href='./create_schedule.html';
         },
-        events: [{
-            title: 'All Day Event',
-            start: '2020-09-01'
-          },
-          {
-            title: 'Long Event',
-            start: '2020-09-07',
-            end: '2020-09-10'
-          },
-          {
-            groupId: 999,
-            title: 'Repeating Event',
-            start: '2020-09-09T16:00:00'
-          },
-          {
-            groupId: 999,
-            title: 'Repeating Event',
-            start: '2020-09-16T16:00:00'
-          },
-          {
-            title: 'Conference',
-            start: '2020-09-11',
-            end: '2020-09-13'
-          },
-          {
-            title: 'Meeting',
-            start: '2020-09-12T10:30:00',
-            end: '2020-09-12T12:30:00'
-          },
-          {
-            title: 'Lunch',
-            start: '2020-09-12T12:00:00'
-          },
-          {
-            title: 'Meeting',
-            start: '2020-09-12T14:30:00'
-          },
-          {
-            title: 'Happy Hour',
-            start: '2020-09-12T17:30:00'
-          },
-          {
-            title: 'Dinner',
-            start: '2020-09-12T20:00:00'
-          },
-          {
-            title: 'Birthday Party',
-            start: '2020-09-13T07:00:00'
-          },
-          {
-            title: 'Click for Google',
-            url: 'http://google.com/',
-            start: '2020-09-28'
-          }
-        ],
+        events: [],
         eventClick: function (info) {
-          alert('Event: ' + info
-            .event.title);
-          alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-          alert('View: ' + info.view.type);
+          let split = String(info.event._instance.range.start).split(" ");
+          console.log(split);
+         document.getElementById('clickDate').innerText=`${split[3]}-${abbreviationMonth[split[1]]}-${split[2]}`;
+          console.log(info.event._instance.range.start);
 
-          // change the border color just for fun
-          info.el.style.borderColor = 'red';
+          let openWin = window.open("info_schedule_list.html","childForm", "width=700, height=1000, resizable = no, scrollbars = no");
+
         }
       });
 
-
       calendar.render();
+      db.collection("Celandar_Data").where("User", "==", `${uid}`).get().then(snapShot=>{
+          snapShot.forEach(doc => {
+            calendar.addEvent({title:`${doc.data().Title}`,start:`${doc.data().Date}T${doc.data().Time}:00`})
+            
+          });
+        })
+      } else {
+        // User is signed out
+
+      }
     });
-  </script>
-</head>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+    })
+
+</script>
 
 <body>
-  <div id='calendar'></div>
+  <!-- header -->
+  <header class="header">
+    <div class="logo">
+      SGG <a class="logo2">cheduler</a>
+    </div>
+  </header>
+  <div id="clickDate" style="display:hidden"></div>
+  <div id='calendar' class="calendar" style="background-color: #F1F3F5;"></div>
+
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome to Firebase Hosting</title>
+  <title>SSG</title>
 
   <!-- update the version number as needed -->
   <script defer src="/__/firebase/9.13.0/firebase-app-compat.js"></script>
@@ -23,15 +23,33 @@
       to avoid connecting the SDK to running emulators.
     -->
   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <link rel="stylesheet" href="./css/background.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+  </style>
 </head>
 
 <body>
+  <header>
+    <div class="logo">
+      <a class="logo2">SSGcheduler</a>
+    </div>
+  </header>
   <script type="module">
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+      import { 
+        getAuth,// authentication 설정
+        signInWithPopup, //google 로그인을 팝업창에 띄우기 위해
+        GoogleAuthProvider, //google login 기능
+        signInWithEmailAndPassword,// email 로그인
+        createUserWithEmailAndPassword, //email 회원가입
+    } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
+
     // Your web app's Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyBiTFjRavybJs8Q0lBRgGPRq3nRJR9AOPQ",
@@ -41,30 +59,47 @@
       messagingSenderId: "423408396660",
       appId: "1:423408396660:web:fc5e5957c9574d5c022421"
     };
+  
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    // firebase의 인증객체를 받아둘 객체
+    const auth = firebase.auth();
+    // authoProvider를 GoogleAuthProvider를 이용한다.
+    var provider = new firebase.auth.GoogleAuthProvider();
+    //signInWithPopup(authProvider);
+    const event=[];
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
 
-    // Initialize Cloud Firestore and get a reference to the service
-    //Database에서 데이터 가져오기
-    const db = firebase.firestore();
-      db.collection('Celandar_Data').get().then((result)=>{
-        //console.log(result);
-        result.forEach((doc)=>{
-          //console.log(doc);
-          console.log(doc.data());
-          //var templete = `<div>상품하나</div>`;
-          var templete = `<div class="Celandar_Data">
-        <p class="Date">${doc.data().Date}</p>
-        <p class="Time">${doc.data().Time}</p>
-        <p class="Title">${doc.data().Title}</p>
-        <p class="Description">${doc.data().Description}</p>
-        <p class="TodoList">${doc.data().TodoList}</p>
-        <p class="float-end">0</p>
-      </div>`
-          $('.container').append(templete) //.container에 templete 추가
-        })
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+        console.log('success');
+        console.log(user);
+        console.log(user.uid);
+
+        console.log(auth);
+        window.location.href='./calendar.html'
       })
-  </script>
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+      
+      
+    </script>
+
   <!-- jQeury -->
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
