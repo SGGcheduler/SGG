@@ -1,28 +1,26 @@
 @import "reset.css";
 
-body{
+body {
   /*background: linear-gradient( to left, rgb(239, 231, 192),rgb(160, 207, 254)); */
-  background:linear-gradient(to right, rgb(132, 144, 200), rgb(248, 238, 225));
+  background: linear-gradient(to right, rgb(152, 170, 250), rgb(242, 212, 153));
 
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
-.logo{
-  font-size:4em;
-  margin:25px;
+.logo {
+  font-size: 4em;
+  margin: 25px;
   font-family: Caveat;
-  float:left;
+  float: left;
 }
 
-.logo2{
-  font-size:0.7em;
-  font-family:Caveat;
-  
+.logo2 {
+  font-size: 0.7em;
+  font-family: Caveat;
 }
 
-.acc{
-  font-size:1em;
+.acc {
+  font-size: 1em;
   text-align: right;
-  margin-right:20px;
+  margin-right: 20px;
 }
-

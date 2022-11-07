@@ -50,6 +50,13 @@ function createListItem() {
     }
 }
 
+
+var array = new Array();
+
+for(var i=0; i<tasks.length; i++){
+    array[i] = tasks[i].val;
+}
+
 // 에러 관련 함수
 function errorMsg(msg) {
     message.style.display = 'block';
@@ -70,6 +77,7 @@ userTask.addEventListener('input', (e) => {
 // 리스트 아이템 생성 함수
 function genItem(val, complete) {
     const li = document.createElement('li');
+    li.setAttribute("class", "Todolist");
     li.textContent = val;
     listTodo.appendChild(li); // 예전에는 appendChild()
     // 인풋 초기화
@@ -110,10 +118,9 @@ function buildTasks() {
     // 할 일 정보 목록을 재생성합니다.
     curList.forEach((el) => {
         // 할일 객체 만들기
-        const tempTask = {
-            val: el.textContent,
-            checked: false
-        };
+        const tempTask = [
+            el.textContent
+        ];
 
         // done 클래스가 있는지 확인하고 있다면 checked 정보를 변경합니다.
         if (el.classList.contains('done')) {
@@ -127,7 +134,12 @@ function buildTasks() {
 
 // 할일 목록을 localStorage 에 저장하기
 function saveTasks() {
-    localStorage.setItem('tasklist', JSON.stringify(tasks));
+    const db = firebase.firestore();
+    
+        
+     document.getElementById("enter_Button").addEventListener('click', () => {
+       db.collection('Celandar_Data').add({Date: $('#Date').val(), Time: $('#Time').val(), Title: $('#Title').val(), Description: $('#Description').val(), TodoList: $.map($('li.Todolist'), (item, i) => { return item.textContent} )})
+     });
 }
 
 
