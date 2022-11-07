@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+   
+    <link rel="stylesheet" href="css/create_schedule.css">
+    <script src="https://kit.fontawesome.com/9e1a07a81c.js" crossorigin="anonymous"></script>
+    <title>캘린더</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+    </style>
+    <link href='./css/calendar.css' rel='stylesheet' />
+  <script src='./lib/main.js'></script>
+  <script>
+    const date = new Date();
+
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    const dateStr = year + '-' + month + '-' + day;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var calendarEl = document.getElementById("calendar");
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        aspectRatio: 1.5,
+        headerToolbar: {
+          left: 'prevYear,prev,next,nextYear today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay'
+        },
+        initialDate: `${dateStr}`,
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        dayMaxEvents: true, // allow "more" link when too many events
+        selectable: true,
+        selectMirror: true,
+        select: function (arg) {
+          var title = prompt('Event Title:');
+          if (title) {
+            calendar.addEvent({
+              title: title,
+              start: arg.start,
+              end: arg.end,
+              allDay: arg.allDay
+            })
+          }
+          calendar.unselect()
+        },
+        events: [{
+            title: 'All Day Event',
+            start: '2020-09-01'
+          },
+          {
+            title: 'Long Event',
+            start: '2020-09-07',
+            end: '2020-09-10'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2020-09-09T16:00:00'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2020-09-16T16:00:00'
+          },
+          {
+            title: 'Conference',
+            start: '2020-09-11',
+            end: '2020-09-13'
+          },
+          {
+            title: 'Meeting',
+            start: '2020-09-12T10:30:00',
+            end: '2020-09-12T12:30:00'
+          },
+          {
+            title: 'Lunch',
+            start: '2020-09-12T12:00:00'
+          },
+          {
+            title: 'Meeting',
+            start: '2020-09-12T14:30:00'
+          },
+          {
+            title: 'Happy Hour',
+            start: '2020-09-12T17:30:00'
+          },
+          {
+            title: 'Dinner',
+            start: '2020-09-12T20:00:00'
+          },
+          {
+            title: 'Birthday Party',
+            start: '2020-09-13T07:00:00'
+          },
+          {
+            title: 'Click for Google',
+            url: 'http://google.com/',
+            start: '2020-09-28'
+          }
+        ],
+        eventClick: function (info) {
+          alert('Event: ' + info
+            .event.title);
+          alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+          alert('View: ' + info.view.type);
+
+          // change the border color just for fun
+          info.el.style.borderColor = 'red';
+        }
+      });
+
+
+      calendar.render();
+    });
+  </script>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="logo">
+          SGG <a class="logo2">cheduler</a>
+        </div> 
+    </header>
+    
+    <div id='calendar' class="calendar" style="background-color: #F1F3F5;"></div>
+    <!-- #E9ECEF 밝은 회색 -->
+    <!-- #F1F3F5 -->
+    <!-- F8F9Fa -->
+
+    <script src="todolist.js"></script>
+</body>
+</html>
+
+
+
