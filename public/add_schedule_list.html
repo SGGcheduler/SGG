@@ -21,7 +21,7 @@
     <script defer src="/__/firebase/9.13.0/firebase-analytics-compat.js"></script>
     <script defer src="/__/firebase/9.13.0/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/9.13.0/firebase-performance-compat.js"></script>
-    <!-- 
+    <!--
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
@@ -34,7 +34,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
-      
+
         // Your web app's Firebase configuration
         const firebaseConfig = {
           apiKey: "AIzaSyBiTFjRavybJs8Q0lBRgGPRq3nRJR9AOPQ",
@@ -44,10 +44,10 @@
           messagingSenderId: "423408396660",
           appId: "1:423408396660:web:fc5e5957c9574d5c022421"
         };
-      
+
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-  
+
         // Initialize Cloud Firestore and get a reference to the service
         //Database에서 데이터 가져오기
         const db = firebase.firestore();
@@ -67,7 +67,7 @@
           })
         })
       </script>
-  
+
       <!-- jQeury -->
       <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -87,7 +87,7 @@
                 <div class="Date">날짜 : 몇년 몇월 몇일</div>
                 <div class="Time">시간 : 몇시 몇분 몇초</div>
                 <div class="Description">내용 : </div>
-            </div> -->
+            </div>
         </div>
         <button style="width : 100%; margin-top: 10px;"><i class="fa-solid fa-plus"></i></button>
     </div>
