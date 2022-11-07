@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>스케줄 생성</title>
@@ -31,12 +32,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-
-        </style>
-
-  </head>
     </style>
+
 </head>
+</style>
+</head>
+
 <body>
     <script type="module">
         // Import the functions you need from the SDKs you need
@@ -65,23 +66,20 @@
           db.collection('Celandar_Data').add({User: $('#User'), Date: $('#Date').val(), Time: $('#Time').val(), Title: $('#Title').val(), Description: $('#Description').val(), TodoList: $('#TodoList').val()})
         });
 
-      </script>
+    </script>
 
-      <!-- jQeury -->
-      <script
-      src="https://code.jquery.com/jquery-3.6.1.min.js"
-      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-      crossorigin="anonymous"></script>
+    <!-- jQeury -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
-      <div class = "container"></div>
+    <div class="container"></div>
 
-      <!-- create_schedule화면 -->
-      <!-- header -->
+    <!-- create_schedule화면 -->
+    <!-- header -->
     <header>
         <div class="logo">
-          SGG <a class="logo2">cheduler</a>
-          
-        </div> 
+            SGG <a class="logo2">Scheduler</a>
+        </div>
 
         <!--
         <div class="log_out">
@@ -89,84 +87,53 @@
         </div>
         -->
     </header>
-    
-        <div class="page" style="clear:both">
-            <div class="container">
-                <div class="create_schedule">
 
-                    <div class="enter">스케줄 등록</div>
-
-                    <div class="Date">날짜
-                        <br><label for="date"></label>
-                        <input type="date" id="date" required>
-                    </div>
-
-                    <div class="Time">시간
-                        <br><input type="time" required>
-                    </div>
-
-                    <div class="Title">제목
-                        <br><label for="title"></label>
-                        <input type="text" id="title" required></br>
-                    </div>
-
-                    <div class="Description">내용
-                        <label for="content"></label></br>
-                        <textarea rows=15 cols=50 name="content" required></textarea></br>
-                    </div>
-                </div>
-
-                <!--투두리스트-->
-        <div class="page" style="clear:both">
+    <div class="page" style="clear:both">
+        <div class="container">
+            <!--투두리스트-->
             <div class="create_schedule">
 
-                    <div class="enter">스케줄 등록</div>
+                <div class="enter">스케줄 등록</div>
 
-                    <div class="date">날짜
-                        <br><label for="date"></label>
-                        <input type="date" id="Date" required>
-                    </div>
-
-                    <div class="time">시간
-                        <br><label for="time"></label>
-                        <input type="time" id="Time" required>
-                    </div>
-
-                    <div class="title">제목
-                        <br><label for="title"></label>
-                        <input type="text" id="Title" required></br>
-                    </div>
-
-                    <div class="description">내용
-                        <label for="content"></label></br>
-                        <textarea rows=15 cols=50 name="content" id="Description" required></textarea></br>
-                    </div>
-
-                    <!--투두리스트-->
-
-                <div class="to_do_list">
-                    <div class="todo_title">To Do List</div>
-                    <article class="artcl_main">
-                        <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
-                        <button class="plus"><i class="fa-solid fa-plus"></i></button>
-                    </article>
-                    <div class="to_do_list">
-                      <div class="todo_title">To Do List</div>
-                      <article class="artcl_main">
-                          <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
-                          <button><i class="fa-solid fa-plus"></i></button>
-                      </article>
-
-                    <div>
-                        <ul class="list_todo"></ul>
-                        <button class="btn">리스트 다운로드</button>
-                    </div>
+                <div class="date">날짜
+                    <br><label for="date"></label>
+                    <input type="date" id="Date" required>
                 </div>
-            </div>
-            <div id="enter_Button" class="enter_Button">
-                <button type="submit">등록</button>
+
+                <div class="time">시간
+                    <br><label for="time"></label>
+                    <input type="time" id="Time" required>
+                </div>
+
+                <div class="title">제목
+                    <br><label for="title"></label>
+                    <input type="text" id="Title" required></br>
+                </div>
+
+                <div class="description">내용
+                    <label for="content"></label></br>
+                    <textarea rows=15 cols=50 name="content" id="Description" required></textarea></br>
+                </div>
+
             </div>
         </div>
-    <script src="todolist.js"></script>
+        <!--투두리스트-->
+        <div class="to_do_list">
+            <div class="todo_title">To Do List</div>
+            <article class="artcl_main">
+                <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
+                <button class="plus"><i class="fa-solid fa-plus"></i></button>
+            </article>
+            <div>
+                <ul class="list_todo"></ul>
+                <button class="btn">리스트 다운로드</button>
+            </div>
+        </div>
+        <div id="enter_Button" class="enter_Button">
+            <button type="submit">등록</button>
+        </div>
+        <script src="todolist.js"></script>
+    </div>
 </body>
+
 </html>
