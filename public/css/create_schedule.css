@@ -33,7 +33,7 @@ h1{
 .create_schedule{
     margin-left:90px;
     margin-top:50px;
-    
+
 }
 
 .enter{
@@ -46,7 +46,7 @@ h1{
 .Date{
     margin-top:20px;
     font-size:1.5em;
-    font-family:Nanum Pen Script;   
+    font-family:Nanum Pen Script;
 }
 
 input[type="date"]{
@@ -90,7 +90,7 @@ input[type="text"]{
     margin-top:25px;
     font-family:Nanum Pen Script;
     font-size:1.5em;
-}   
+}
 
 input[type="text"]{
     display:inline-block;
@@ -211,4 +211,7 @@ input[type="text"]{
 
 .done {
     text-decoration: line-through;
+}
+.logout {
+    display:inline-block;
 }
