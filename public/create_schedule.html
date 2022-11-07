@@ -32,50 +32,51 @@
         -->
     </header>
     
-    <div class="page" style="clear:both">
-        <div class="create_schedule">
-      
-                <div class="enter">스케줄 등록</div>
+        <div class="page" style="clear:both">
+            <div class="container">
+                <div class="create_schedule">
+        
+                    <div class="enter">스케줄 등록</div>
 
-                <div class="Date">날짜
-                    <br><label for="date"></label>
-                    <input type="date" id="date" required>
+                    <div class="Date">날짜
+                        <br><label for="date"></label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <div class="Time">시간
+                        <br><input type="time" required>
+                    </div>
+
+                    <div class="Title">제목
+                        <br><label for="title"></label>
+                        <input type="text" id="title" required></br>
+                    </div>
+
+                    <div class="Description">내용
+                        <label for="content"></label></br>
+                        <textarea rows=15 cols=50 name="content" required></textarea></br>
+                    </div>                                
                 </div>
 
-                <div class="Time">시간
-                    <br><input type="time" required>
+                <!--투두리스트--> 
+
+                <div class="to_do_list">
+                    <div class="todo_title">To Do List</div>
+                    <article class="artcl_main">
+                        <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
+                        <button class="plus"><i class="fa-solid fa-plus"></i></button>
+                    </article>
+
+                    <div>
+                        <ul class="list_todo"></ul>
+                        <button class="btn">리스트 다운로드</button>
+                    </div>
                 </div>
-
-                <div class="Title">제목
-                    <br><label for="title"></label>
-                    <input type="text" id="title" required></br>
-                </div>
-
-                <div class="Description">내용
-                    <label for="content"></label></br>
-                    <textarea rows=15 cols=50 name="content" required></textarea></br>
-                </div>
-                
-                <div class="enter_Button">
-                    <button type="submit">등록</button>
-                </div>                                      
-        </div>
-
-     <!--투두리스트--> 
-
-        <div class="to_do_list">
-            <div class="todo_title">To Do List</div>
-            <article class="artcl_main">
-                <input placeholder="해야 할 일을 적어보세요!" maxlength="30">
-                <button class="plus"><i class="fa-solid fa-plus"></i></button>
-            </article>
-
-            <div>
-                <ul class="list_todo"></ul>
-                <button class="btn">리스트 다운로드</button>
+            </div>
+            <div id="enter_Button" class="enter_Button">
+                <button type="submit">등록</button>
             </div>
         </div>
-    </div>
     <script src="todolist.js"></script>
 </body>
 </html>
