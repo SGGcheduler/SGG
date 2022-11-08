@@ -69,8 +69,8 @@
     <!-- create_schedule화면 -->
     <!-- header -->
     <header>
-        <div class="logo">
-            SGG <a class="logo2">cheduler</a>
+        <div class="logo" ><a href="./calendar.html" style="text-decoration: none; color:white">
+            SGG <div style="display: inline" class="logo2">cheduler</div></a>
         </div>
 
         <!--
@@ -81,7 +81,7 @@
     </header>
 
     <div class="page" style="clear:both">
-        <div>
+
             <div class="container">
                 <!--스케줄등록-->
                 <div class="create_schedule">
@@ -107,9 +107,7 @@
                         <label for="content"></label></br>
                         <textarea rows=15 cols=50 name="content" id="Description" required></textarea></br>
                     </div>
-
                 </div>
-            </div>
             <!--투두리스트-->
             <div class="to_do_list">
                 <div class="todo_title">To Do List</div>
@@ -126,8 +124,8 @@
         <div id="enter_Button" class="enter_Button">
             <button type="submit">등록</button>
         </div>
-        <script src="todolist.js"></script>
     </div>
+    <script src="todolist.js"></script>
 </body>
 <script>
     document.getElementById("enter_Button").addEventListener("click", () => {

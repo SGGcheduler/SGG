@@ -1,6 +1,7 @@
 @import "reset.css";
 @import "background.css";
 
+
 .header {
     height: 80px;
 	padding: 0 1rem;
@@ -16,6 +17,7 @@
     border-radius: 10px;
     margin:90px;
     padding-bottom:80px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
 }
 
 h1{
@@ -27,18 +29,44 @@ input {
     border-radius: 5px;
 }
 
+.logout{
+  width: 100px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+  box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
+}
+
 .log_out {
     float:right;
-    font-family:pretendard;
     font-size:1.5em;
     padding:15px;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 
 
 /*스케줄 등록*/
 
 .create_schedule{
     margin: 50px 90px;
+    width: 100%;
+}
+
+.schedule {
+    margin: 10px;
+    border-radius: 5px;
     width: 100%;
 }
 
@@ -56,6 +84,8 @@ input {
     margin-bottom:20px;
     font-size:15px;
     font-family:pretendard;   
+    display: inline-block;
+    padding-right: 20px;
 }
 
 input[type="date"]{
@@ -70,8 +100,10 @@ input[type="date"]{
 
 .Time{
     margin-bottom:20px;
-    font-size:1.5em;
+    font-size:15px;
     font-family:pretendard;
+    display: inline-block;
+    
 }
 
 input[type="Time"]{
@@ -85,9 +117,12 @@ input[type="Time"]{
 
 /*제목*/
 .Title{
+    width: 60%;
     margin-bottom:25px;
     font-family:pretendard;
     font-size:1.5em;
+    display: inline-block;
+    padding-right: 20px;
 }
 
 input[type="text"]{
@@ -103,6 +138,7 @@ input[type="text"]{
     margin-bottom:25px;
     font-family:pretendard;
     font-size:1.5em;
+    padding-bottom: 30px;
 }   
 
 input[type="text"]{
@@ -288,4 +324,26 @@ textarea{
     border-radius: 5px;
     width: 100%;
     padding: 50px;
+}
+
+.schedule_todolist {
+    border: 3px solid white;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
+}
+
+.schedule_todolist li {
+    font-size: 25px;
+}
+#today{
+    display: none;
+}
+.schedule_content {
+    padding: 25px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 3px solid white;
+    box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.3);
 }

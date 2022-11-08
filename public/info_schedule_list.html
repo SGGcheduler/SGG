@@ -6,9 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/todolist.css">
-  <link rel="stylesheet" href="css/create_schedule.css">
+  <link rel="stylesheet" href="css/add_schedule_list.css">
   <script src="https://kit.fontawesome.com/9e1a07a81c.js" crossorigin="anonymous"></script>
   <title>스케줄리스트 추가</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+  </style>
 
   <!-- update the version number as needed -->
   <script defer src="/__/firebase/9.13.0/firebase-app-compat.js"></script>
@@ -60,9 +67,9 @@
         db.collection("Celandar_Data").where("User", "==", `${uid}`).where("Date","==",`${document.getElementById('today').innerText}`).get().then(snapShot=>{
             snapShot.forEach(doc => {
             console.log(doc.data());
-            var templete = `<div class="schedule_content" style="border: solid 3px; padding:10px">
+            var templete = `<div class="schedule_content">
                 <div class="Title">제목 : ${doc.data().Title}</div>
-                <div class="Date">날짜 : ${doc.data().Date}</div>
+                <div class="Date">날짜 : ${doc.data().Date} </div>
                 <div class="Time">시간 : ${doc.data().Time}</div>
                 <div class="Description">내용 : ${doc.data().Description}</div>
             </div>`
@@ -72,11 +79,11 @@
             //todolist 목록 DB에서 가져오기
             var templete_todo = doc.data().TodoList;
               //todolist 정렬
-              var list = "<div><ul>";
+              var list = "<div>";
                 for (var i=0; i<templete_todo.length; i++){
-                  list +="<li>Todo " + [i+1] + " : " + templete_todo[i] + "</li>";
+                  list +="<li>" + templete_todo[i] + "</li>";
                 }
-                list += "</ul></div>";
+                list += "</div>";
             ///.schedule_todolist에 templete 추가
             $('.schedule_todolist').append(list);
           })
@@ -94,14 +101,18 @@
 
   <!-- header -->
   <header class="header">
-    <h1 class="website-title">SGG</h1>
-    <button class="logout">로그아웃</button>
+    <div class="logo">
+      SGG <a class="logo2">cheduler</a></a>
+    </div>
+    <!--<button class="logout">로그아웃</button>-->
   </header>
 
   <div class="page" style="width: 80%;">
     <div id="today"></div>
-    <div class="schedule" style="border: solid 3px black;"></div>
-    <div class="schedule_todolist" style="width : 100%; margin-top: 10px;"></button>
+    <div class="container">
+    <div class="schedule"></div>
+    <div class="schedule_todolist" style="width : 70%; margin-top: 10px; font-size: 30px;"><p style="padding-bottom:20px; font-size:40px;">To-Do list</p>
+    </div>
   </div>
 </body>
 <script>
