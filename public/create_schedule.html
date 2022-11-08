@@ -137,11 +137,28 @@
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 var uid = user.uid;
                 saveTasks(uid);
+                // window.location.href='./calendar.html'
             } else {
                 // User is signed out
                 // ...
             }
-        });
+        })
+      //   .then(
+      //     (result) => {
+        
+      //   window.location.href='./calendar.html'
+      //     }
+      //   )
+      //   .catch((error) => {
+      //   // Handle Errors here.
+      //   var errorCode = error.code;
+      //   var errorMessage = error.message;
+      //   // The email of the user's account used.
+      //   var email = error.email;
+      //   // The firebase.auth.AuthCredential type that was used.
+      //   var credential = error.credential;
+      //   // ...
+      // });
         console.log("등록 클릭");
 
     });
