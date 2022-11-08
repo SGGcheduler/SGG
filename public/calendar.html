@@ -104,7 +104,7 @@
          document.getElementById('clickDate').innerText=`${split[3]}-${abbreviationMonth[split[1]]}-${split[2]}`;
           console.log(info.event._instance.range.start);
 
-          let openWin = window.open("info_schedule_list.html","childForm", "width=700, height=1000, resizable = no, scrollbars = no");
+          let openWin = window.open("info_schedule_list.html","childForm", "width=1000, height=1000, resizable = no, scrollbars = no");
 
         }
       });
@@ -139,5 +139,21 @@
   <div id='calendar' class="calendar" style="background-color: #F1F3F5;"></div>
 
 </body>
+<script>
+  const signOut = () => {
+    firebase.auth().signOut().then(function () {
+      console.log("로그아웃성공");
+      window.location.href = "/index.html"
+
+    }).catch(function (error) {
+      if (error) {
+        console.log("로그아웃 실패");
+      }
+    })
+  };
+  $('.logout').on('click', () => {
+    signOut();
+  });
+</script>
 
 </html>

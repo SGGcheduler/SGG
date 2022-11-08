@@ -69,8 +69,8 @@
     <!-- create_schedule화면 -->
     <!-- header -->
     <header>
-        <div class="logo" ><a href="./calendar.html" style="text-decoration: none; color:white">
-            SGG <div style="display: inline" class="logo2">cheduler</div></a>
+        <div class="logo"><a href="./calendar.html" style="text-decoration: none; color:white">
+                SGG <div style="display: inline" class="logo2">cheduler</div></a>
         </div>
 
         <!--
@@ -82,32 +82,32 @@
 
     <div class="page" style="clear:both">
 
-            <div class="container">
-                <!--스케줄등록-->
-                <div class="create_schedule">
+        <div class="container">
+            <!--스케줄등록-->
+            <div class="create_schedule">
 
-                    <div class="enter">스케줄 등록</div>
+                <div class="enter">스케줄 등록</div>
 
-                    <div class="date">날짜
-                        <br><label for="date"></label>
-                        <input type="date" id="Date" required>
-                    </div>
-
-                    <div class="time">시간
-                        <br><label for="time"></label>
-                        <input type="time" id="Time" required>
-                    </div>
-
-                    <div class="title">제목
-                        <br><label for="title"></label>
-                        <input type="text" id="Title" required></br>
-                    </div>
-
-                    <div class="description">내용
-                        <label for="content"></label></br>
-                        <textarea rows=15 cols=50 name="content" id="Description" required></textarea></br>
-                    </div>
+                <div class="date">날짜
+                    <br><label for="date"></label>
+                    <input type="date" id="Date" required>
                 </div>
+
+                <div class="time">시간
+                    <br><label for="time"></label>
+                    <input type="time" id="Time" required>
+                </div>
+
+                <div class="title">제목
+                    <br><label for="title"></label>
+                    <input type="text" id="Title" required></br>
+                </div>
+
+                <div class="description">내용
+                    <label for="content"></label></br>
+                    <textarea rows=15 cols=50 name="content" id="Description" required></textarea></br>
+                </div>
+            </div>
             <!--투두리스트-->
             <div class="to_do_list">
                 <div class="todo_title">To Do List</div>
@@ -135,28 +135,13 @@
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 var uid = user.uid;
                 saveTasks(uid);
-                // window.location.href='./calendar.html'
+                window.location.href = './calendar.html'
             } else {
                 // User is signed out
                 // ...
             }
         })
-      //   .then(
-      //     (result) => {
-        
-      //   window.location.href='./calendar.html'
-      //     }
-      //   )
-      //   .catch((error) => {
-      //   // Handle Errors here.
-      //   var errorCode = error.code;
-      //   var errorMessage = error.message;
-      //   // The email of the user's account used.
-      //   var email = error.email;
-      //   // The firebase.auth.AuthCredential type that was used.
-      //   var credential = error.credential;
-      //   // ...
-      // });
+
         console.log("등록 클릭");
 
     });
